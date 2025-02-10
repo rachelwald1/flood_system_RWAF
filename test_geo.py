@@ -58,6 +58,7 @@ def test_stations_by_distance():
         
 test_stations_by_distance()
 
+
 def test_stations_within_radius():
 
     test_station2=[]
@@ -99,3 +100,44 @@ def test_stations_within_radius():
     assert within_rad_stations[0].town == "Girton"
     
 test_stations_within_radius()
+
+
+def test_rivers_with_stations():
+    
+    test_station3=[]
+    # Create a station
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (0.0, 0.0)
+    trange = (-2.3, 3.4445)
+    river = "Thames"
+    town = "London"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    test_station3.append(s)
+    
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (0.0, 0.0)
+    trange = (-2.3, 3.4445)
+    river = "Severn"
+    town = "Gloucester"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    test_station3.append(s)
+    
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (0.0, 0.0)
+    trange = (-2.3, 3.4445)
+    river = "Nile"
+    town = "Cairo"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    test_station3.append(s)
+    
+    cambridge_centre = (52.2053, 0.1218)
+    
+    rivers_mon_list = list(rivers_with_stations(test_station3))
+    
+    assert "Thames" in rivers_mon_list and "Severn" in rivers_mon_list and "Nile" in rivers_mon_list 
