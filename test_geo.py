@@ -57,3 +57,45 @@ def test_stations_by_distance():
         count=count+1  
         
 test_stations_by_distance()
+
+def test_stations_within_radius():
+
+    test_station2=[]
+    # Create a station
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (52.2330, 0.0830)
+    trange = (-2.3, 3.4445)
+    river = "River X"
+    town = "Girton"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    test_station2.append(s)
+    
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (52.5703, 0.2408)
+    trange = (-2.3, 3.4445)
+    river = "River X"
+    town = "Peterborough"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    test_station2.append(s)
+    
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (48.8566, 2.3522)
+    trange = (-2.3, 3.4445)
+    river = "River X"
+    town = "Paris"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    test_station2.append(s)
+    
+    cambridge_centre = (52.2053, 0.1218)
+    
+    within_rad_stations=(stations_within_radius(test_station2,cambridge_centre, 10))
+    assert len(within_rad_stations) == 1
+    assert within_rad_stations[0].town == "Girton"
+    
+test_stations_within_radius()
