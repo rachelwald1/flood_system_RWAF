@@ -105,3 +105,14 @@ def rivers_by_station_number(stations, N):
             i += 1
             
     return top_N_rivers
+
+
+def inconsistent_typical_range_stations(stations):
+               
+        inconsistent_stations = []
+       
+        for i in range(len(stations)):
+            consistant = MonitoringStation.typical_range_consistent(stations[i])
+            if consistant == False:
+                inconsistent_stations.append(stations[i].name)
+        return inconsistent_stations
