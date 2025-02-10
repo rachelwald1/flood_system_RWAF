@@ -6,7 +6,7 @@ geographical data.
 
 """
 
-from .utils import sorted_by_key  # noqa
+from floodsystem.utils import sorted_by_key  # noqa
 # import numpy to create haversine formula
 import numpy as np
 
@@ -46,4 +46,13 @@ def stations_by_distance(stations, p):
     print(sorted_distances[0])
     return sorted_distances 
 
-
+# function that returns all stations within a given radius
+def stations_within_radius(stations, p, r):
+    within_radius = []
+    
+    for station in stations:
+        distance = haversine_distance((station.coord), p)
+        if distance <= r:
+            within_radius.append(station)
+        
+    return within_radius
