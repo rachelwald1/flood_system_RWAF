@@ -39,3 +39,17 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+    
+    def typical_range_consistent(self):
+       
+        # check if  station has a two values for typical range
+        if self.typical_range == None:
+            consistant = False
+        else:
+            (x,y) = self.typical_range
+            low_minus_high = x - y
+            if low_minus_high > 0:
+                consistant = False
+            if low_minus_high <= 0:
+                consistant = True
+        return consistant
