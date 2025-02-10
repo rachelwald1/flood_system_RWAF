@@ -56,3 +56,22 @@ def stations_within_radius(stations, p, r):
             within_radius.append(station)
         
     return within_radius
+
+def rivers_with_stations(stations):
+    rivers_monitored = set()
+   
+    for station in stations:
+        rivers_monitored.add(station.river)
+         
+    return  list(rivers_monitored)
+
+def stations_by_river(stations):
+   
+    stations_dict = {}
+   
+    for station in stations:
+        if station.river in stations_dict:
+            stations_dict[station.river].append(station)
+        else:
+            stations_dict[station.river] = [station]
+    return stations_dict
