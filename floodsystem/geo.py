@@ -75,3 +75,33 @@ def stations_by_river(stations):
         else:
             stations_dict[station.river] = [station]
     return stations_dict
+
+def rivers_by_station_number(stations, N):
+    
+    # create a dictionary to count the stations for each river
+    station_count_by_river = {}
+    
+    for station in stations:
+        river = station.river
+        
+        if river in station_count_by_river:
+            station_count_by_river[river] += 1
+        else:
+            station_count_by_river[river] = 1
+        
+    sorted_rivers = sorted(station_count_by_river.items(), key=lambda x: x[1], reverse=True)
+    
+    top_N_rivers = sorted_rivers[:N]
+    
+    top_N_rivers = []
+    i = 0
+    
+    while len(top_N_rivers) < N:
+        top_N_rivers.append(sorted_rivers[i])
+        i += 1
+        
+        while i < len(sorted_rivers) and sorted_rivers[i][1] == sorted_rivers[i - 1][1]:
+            top_N_rivers.append(sorted_rivers[i])
+            i += 1
+            
+    return top_N_rivers
