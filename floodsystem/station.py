@@ -42,10 +42,12 @@ class MonitoringStation:
     
     def typical_range_consistent(self):
        
-        # check if  station has a two values for typical range
+        # self.typical_range is attribute consisting of a tuple with two values
+        # if one of the values is None (empty), the function returns false and is not valid
         if self.typical_range == None:
             consistant = False
         else:
+            # (x, y) is tuple containing x as lower bound and y as upper bound
             (x,y) = self.typical_range
             low_minus_high = x - y
             if low_minus_high > 0:
