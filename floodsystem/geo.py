@@ -42,7 +42,7 @@ def stations_by_distance(stations, p):
     # sort the list by distance (second element of each tuple, ie. x[1])
     sorted_distances = sorted(distances, key=lambda x: x[1])
     # prints list of names of places (first element of each tuple, ie. x[0])
-    print(sorted_distances[0])
+    # print(sorted_distances[0])
     return sorted_distances 
 
 # function that returns all stations within a given radius

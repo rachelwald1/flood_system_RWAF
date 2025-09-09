@@ -14,7 +14,7 @@ def test_stations_by_distance():
     river = "River X"
     town = "Moscow"
     s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
-    test_station.append(s)
+    test_station.append(s)    
     
     s_id = "test-s-id"
     m_id = "test-m-id"
@@ -35,14 +35,16 @@ def test_stations_by_distance():
     town = "Melbourne"
     s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
     test_station.append(s)
+        
     
     cambridge_centre = (52.2053, 0.1218)
 
-    #print(stations_by_distance(test_station,cambridge_centre))
+    # print(stations_by_distance(test_station,cambridge_centre))
     sorted_stations=(stations_by_distance(test_station,cambridge_centre))
-    #print(sorted_stations[0])
+    # print(sorted_stations[0])
     #first_object=sorted_stations[0]
     #assert first_object.town == "London"
+    
     count=0
     for station, distance in sorted_stations[:3]:
         if count==0:
@@ -55,8 +57,11 @@ def test_stations_by_distance():
             output= (f"{station.name}, {station.town}")
             assert output== "some station, Melbourne"
         count=count+1  
+    
+    
         
 test_stations_by_distance()
+
 
 
 def test_stations_within_radius():
